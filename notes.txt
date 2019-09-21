@@ -1,0 +1,6 @@
+Cell structure on initial condition space
+draw a 1D line in the space, take x
+draw x - simulation_time graph
+
+Dumped ideas:
+	Split simulation and rendering to different machines
