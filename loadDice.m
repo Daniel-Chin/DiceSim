@@ -15,7 +15,6 @@ for i = 1 : N_POINTS
     % To vectorize this loop: how do you [x' for x in a]? 
     I = I - X(i, :)' * X(i, :);
 end
-display('Did I get the I right?');
 
 force = zeros(N_POINTS, 3);
 CM_position = [0 0 INIT_HEIGHT];
