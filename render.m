@@ -6,7 +6,7 @@ mesh(GROUND_X, GROUND_Y, GROUND_Z);
 % draw edges
 for pair = EDGE
     absolute = X(pair, :) + CM_position;
-    line(absolute(:, 1), absolute(:, 2), absolute(:, 3));
+    line(absolute(:, 1), absolute(:, 2), absolute(:, 3), 'linewidth', sum(X(pair, 3)) + 3);
 end
 
 % draw dots

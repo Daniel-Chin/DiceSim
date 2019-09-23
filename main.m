@@ -3,24 +3,25 @@
 
 clear all; close all;
 
-delta_t = .004;    % in seconds
+delta_t = .003;    % in seconds
 DICE_RADIUS = 1;    % in cm
 INIT_HEIGHT = 10;
 GRAVITY = [0 0 -980];  % 9.8 m/s^2 = 980 cm/s^2
-GROUND_STIFF = 100000;   % in N/cm
+GROUND_STIFF = 500000;   % in N/cm
 GROUND_DAMP = 1;
 GROUND_MU = 1;
 
-GROUND_DRAW_SIZE = 5;
+GROUND_DRAW_SIZE = 10;
 GROUND_DRAW_GRID = 8;
 
 loadDice();
-initDice(); % Give the dice an initial condition
 
 loadGraphics();
 loadFACE_LOOKUP();
 
 theoratical_energy_zero = - 4 * (1 + 1) * GRAVITY(3);
+
+initDice(); % Give the dice an initial condition
 while true
     step();
     render();
