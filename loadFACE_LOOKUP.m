@@ -1,7 +1,5 @@
 FACE_LOOKUP = zeros(8, 8, 8, 8);
-FACE_LOOKUP(1, 2, 3, 4) = 1;
-FACE_LOOKUP(1, 2, 5, 6) = 2;
-FACE_LOOKUP(1, 3, 5, 7) = 3;
-FACE_LOOKUP(2, 4, 6, 8) = 4;
-FACE_LOOKUP(3, 4, 7, 8) = 5;
-FACE_LOOKUP(5, 6, 7, 8) = 6;
+FACE_LOOKUP(sum( ...
+    8 .^ [3:-1:0] .* (FACE_CORNER(1:6, :) - 1), ...
+    2 ...
+) + 1) = [1:6];

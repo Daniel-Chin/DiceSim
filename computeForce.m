@@ -1,15 +1,20 @@
 % gravity computed in step.m
-
-press_force = abs(- X(:, 3)) * GROUND_STIFF;
 % static friction is meaningless before equilibrium, so ignored
-point_v = CM_linear_v + angular_v_cross * X;
-point_v_horizontal = point_v(:, 1:2);
-point_v_vertical   = point_v(:, 3);
-point_orientation_hori  = point_v_horizontal / norm(point_v_horizontal);
-point_orientation_verti = point_v_vertical   / norm(point_v_vertical);
-force = press_force * [0 0 -1] ...
-    + point_orientation_hori  .* press_force * GROUND_MU ...
-    + point_orientation_verti .* press_force * GROUND_DAMP;
 
-% aggregate
-force = force + ;
+press_force = - min(0, X(:, 3) + CM_position(3)) * GROUND_STIFF;
+force = [0 0 1] .* press_force;
+
+point_v = CM_linear_v + X * angular_v_cross;
+point_v_horizontal = point_v .* [1 1 0];
+norm_horizontal = norm(point_v_horizontal);
+if norm_horizontal ~= 0
+    point_orientation_hori = point_v_horizontal / norm_horizontal;
+    force = force - point_orientation_hori .* press_force * GROUND_MU;
+end
+
+point_v_vertical   = point_v .* [0 0 1];
+norm_vertical = norm(point_v_vertical);
+if norm_vertical ~= 0
+    point_orientation_verti = point_v_vertical / norm_vertical;
+    force = force - point_orientation_verti .* press_force * GROUND_DAMP;
+end
