@@ -1,1 +1,2 @@
 Ground damping? 
+Total energy decreases casually

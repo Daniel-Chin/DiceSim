@@ -1,7 +1,8 @@
 % gravity computed in step.m
 % static friction is meaningless before equilibrium, so ignored
 
-press_force = - min(0, X(:, 3) + CM_position(3)) * GROUND_STIFF;
+absolute_X_3 = X(:, 3) + CM_position(3);
+press_force = - min(0, absolute_X_3) * GROUND_STIFF;
 force = [0 0 1] .* press_force;
 
 point_v = CM_linear_v + X * angular_v_cross;

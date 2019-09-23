@@ -5,8 +5,5 @@ function [face] = whichFace(X, FACE_LOOKUP)
 %   2. Take the highest 4 vertices' index
 %   3. Use FACE_LOOKUP
 [~, order] = sort(X(:, 3), 'descend');
-face = FACE_LOOKUP(1 + sum([1 8 64 512 0 0 0 0] * (order - 1)));
-if face == 0
-    error('Face lookup failed');
-end
+face = FACE_LOOKUP(sum(2 .^ order(1:4)));
 end
