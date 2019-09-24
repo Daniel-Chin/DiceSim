@@ -4,8 +4,10 @@
 % The purpose is to break the simulation early to reduce computation.
 % Test result: PASS
 
-for i = 1:1000
-    initProgram();
+initProgram();
+
+while true
+    loadDice();
     L = [rand * 500, rand * 500, rand * 500];
     CM_linear_v = [rand * 10, rand * 10, rand * 10];
     step();

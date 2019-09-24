@@ -4,3 +4,6 @@ draw x - simulation_time graph
 
 Dumped ideas:
 	Split simulation and rendering to different machines
+
+2do:
+	set resolution=0 to find standing dice

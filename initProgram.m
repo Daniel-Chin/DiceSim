@@ -1,6 +1,6 @@
 clear all; close all;
 
-delta_t = .002;    % in seconds
+delta_t = .001;    % in seconds
 DICE_RADIUS = 1;    % in cm
 INIT_HEIGHT = 10;
 GRAVITY = [0 0 -980];  % 9.8 m/s^2 = 980 cm/s^2
@@ -10,8 +10,6 @@ GROUND_MU = 1.2;
 
 GROUND_DRAW_SIZE = 10;
 GROUND_DRAW_GRID = 8;
-
-loadDice();
 
 loadGraphics();
 loadFACE_LOOKUP();
