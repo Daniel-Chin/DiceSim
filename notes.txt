@@ -7,3 +7,15 @@ Dumped ideas:
 
 2do:
 	set resolution=0 to find standing dice
+	Ground damping: prop to pressure
+
+Deviations from reality:
+	1. Rigid body. 
+		we will not have basketball spin. 
+	2. Perfect ground. 
+		Deterministic. 
+	3. Mass distribution on the Dice. 
+		???
+
+Discussion:
+	What does a three-cell-point correspond to? 

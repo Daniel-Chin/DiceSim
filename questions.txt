@@ -1,4 +1,3 @@
-Ground damping? 
-Total energy decreases casually
+Solved: Total energy decreases casually
 dynamic delta_t: closer to ground?
 Use the second term in taylor series? 

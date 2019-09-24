@@ -6,7 +6,7 @@
 
 initProgram();
 
-while true
+for i = 1:1000
     loadDice();
     L = [rand * 500, rand * 500, rand * 500];
     CM_linear_v = [rand * 10, rand * 10, rand * 10];
