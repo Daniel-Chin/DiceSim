@@ -33,7 +33,7 @@ Here goes my preliminary thinking.
 Consider this question:  
 
 For any vector `x` and `e` in the initial condition space,  
-can you give a scalar `b` small enough so that `f(x + b * e) = f(x)`?  
+can you give a scalar `b > 0` small enough so that `f(x + b * e) = f(x)`?  
 
 I believe you can, because what we try to simulate is a continuous system.  
 However, we know `f(x)` can evaluate to 6 different results!  

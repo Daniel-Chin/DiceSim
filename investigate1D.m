@@ -20,9 +20,6 @@ roll();
 left_face = roll_result;
 marching_or_searching = true;
 
-longest_duration = 0;
-longest_duration_T = 0;
-
 while true
     loadDice();
     initDiceFromCursor();
@@ -35,12 +32,6 @@ while true
     else
         roll();
         scatter(cursor, T, 10, FACE_COLOR(roll_result, :));
-    end
-    if T > longest_duration_T
-        longest_duration = cursor;
-        longest_duration_T = T;
-        display('New record, longest duration belongs to');
-        display(cursor);
     end
     if marching_or_searching
         % marching

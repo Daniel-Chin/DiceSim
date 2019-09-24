@@ -19,3 +19,5 @@ Deviations from reality:
 
 Discussion:
 	What does a three-cell-point correspond to? 
+	Ring climbs hill rail analogy
+	Set resolution = 0, got forever.mat
