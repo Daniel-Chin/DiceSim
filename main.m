@@ -6,10 +6,5 @@ initProgram();
 loadDice();
 initDice(); % Give the dice an initial condition
 while true
-    step();
-    T = T + delta_t;
-    render();
-    display(totalEnergy(point_v, absolute_X_3, press_force, - GRAVITY(3), theoratical_energy_zero));
-    display(whichFace(X, FACE_LOOKUP));
-    pause(delta_t);
+    rollAndRender();
 end

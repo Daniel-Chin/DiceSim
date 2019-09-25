@@ -6,8 +6,10 @@ Dumped ideas:
 	Split simulation and rendering to different machines
 
 2do:
-	set resolution=0 to find standing dice
 	Ground damping: prop to pressure
+	zoom in. 
+	zoom out. 
+	A stack of animations
 
 Deviations from reality:
 	1. Rigid body. 
