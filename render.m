@@ -1,5 +1,4 @@
 % draw the 3D world
-max(abs(CM_position))
 linewidth = int8(20 / max([abs(CM_position) 10])) + 1;
 
 % draw ground
