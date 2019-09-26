@@ -16,6 +16,7 @@ loadFACE_LOOKUP();
 
 theoratical_energy_zero = - 4 * (1 + 1) * GRAVITY(3);
 destiny_energy = - (4 + 2 * 2) * sqrt(2) * GRAVITY(3) - theoratical_energy_zero;
+clear destiny_energy;
 confirm_destiny_energy = destiny_energy * .8;
 
 T = 0;
