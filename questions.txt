@@ -1,3 +1,4 @@
 Solved: Total energy decreases casually
 dynamic delta_t: closer to ground?
 Use the second term in taylor series? 
+Is it OK to change I to pretend it's a uniform cube? 

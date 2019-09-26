@@ -12,11 +12,11 @@ R = projection_matrix ...
     + cos(delta_orientation) * (eye(3) - projection_matrix) ...
     + sin(delta_orientation) * angular_v_cross / norm_angular_v;
 
-for i = 1:225
+for i = 1:600
     X = X * R;
     % render();
     % pause(delta_t);
 end
 
-L = [0 0 1000];
+L = [0 0 300];
 CM_linear_v = [0 0 0];

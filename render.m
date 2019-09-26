@@ -1,4 +1,6 @@
 % draw the 3D world
+max(abs(CM_position))
+linewidth = int8(20 / max([abs(CM_position) 10])) + 1;
 
 % draw ground
 mesh(GROUND_X, GROUND_Y, GROUND_Z);
@@ -13,7 +15,7 @@ for pair = EDGE
     end
     line( ...
         absolute(:, 1), absolute(:, 2), absolute(:, 3), ...
-        'linewidth', 2, ...
+        'linewidth', linewidth, ...
         'color'    , color ...
     );
 end
@@ -25,13 +27,13 @@ for face = 1:6
     path = offset + FACE_MARK(:, :, face) * base;
     line(path(:, 1), path(:, 2), path(:, 3), ...
         'color', FACE_COLOR(face, :), ...
-        'linewidth', 3 ...
+        'linewidth', linewidth * 1.5 ...
     );
 end
 
-% draw clock
-line([0 cos(T * 2 * pi)], [0 sin(T * 2 * pi)], [INIT_HEIGHT INIT_HEIGHT], 'linewidth', 2);
+% draw dice height
+line([CM_position(1) CM_position(1)], [CM_position(2) CM_position(2)], [CM_position(3) 0], 'color', 'black');
 
-% lock 3d view
-line([0 0], [0 0], [INIT_HEIGHT + 1, -1]);
+% draw clock
+line([0 cos(T * 2 * pi)], [0 sin(T * 2 * pi)], [0 0], 'linewidth', 2);
 axis equal;

@@ -6,20 +6,20 @@ Dumped ideas:
 	Split simulation and rendering to different machines
 
 2do:
-	Ground damping: prop to pressure
-	zoom in. 
 	zoom out. 
 	A stack of animations
+	3D scatter with T
 
 Deviations from reality:
 	1. Rigid body. 
 		we will not have basketball spin. 
 	2. Perfect ground. 
 		Deterministic. 
-	3. Mass distribution on the Dice. 
-		???
+	3. Super sharp corner
+		Does not spin stably. 
 
 Discussion:
 	What does a three-cell-point correspond to? 
 	Ring climbs hill rail analogy
 	Set resolution = 0, got forever.mat
+	What causes the sin ripple? 

@@ -2,10 +2,10 @@ clear all; close all;
 
 delta_t = .001;    % in seconds
 DICE_RADIUS = 1;    % in cm
-INIT_HEIGHT = 10;
+INIT_HEIGHT = 15;
 GRAVITY = [0 0 -980];  % 9.8 m/s^2 = 980 cm/s^2
 GROUND_STIFF = 500000;   % in N/cm
-GROUND_DAMP = 1.2;
+GROUND_DAMP = 0.005;  % in N*s/cm
 GROUND_MU = 1.2;
 
 GROUND_DRAW_SIZE = 10;

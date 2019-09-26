@@ -5,6 +5,4 @@ initProgram();
 
 loadDice();
 initDice(); % Give the dice an initial condition
-while true
-    rollAndRender();
-end
+rollAndRender();
