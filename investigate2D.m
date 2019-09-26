@@ -1,11 +1,11 @@
 initProgram();
 
-HONEST = true;
-x_range = [0 .1];
-y_range = [0 .1];
-FIG_PATH = '2D_scatter/home/honest_%d.png';
-display(FIG_PATH);
-input('Is that OK? Enter');
+% HONEST = true;
+% x_range = [0 .1];
+% y_range = [0 .1];
+% FIG_PATH = '2D_scatter/home/honest_%d.png';
+% display(FIG_PATH);
+% input('Is that OK? Enter');
 
 hold on;
 resolution = 8;
@@ -28,6 +28,9 @@ while true
     saveas(gcf, sprintf(FIG_PATH, resolution));
     disp('fig saved.');
     resolution = resolution * 2 - 1;
+    if resolution > 100
+        break;
+    end
     disp('expanding matrix...');
     map(1:2:resolution, 1:2:resolution) = map;
     map(2:2:resolution - 1, 1:2:resolution) = map(1:2:resolution - 2, 1:2:resolution);
