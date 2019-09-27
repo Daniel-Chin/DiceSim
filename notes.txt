@@ -6,9 +6,10 @@ Dumped ideas:
 	Split simulation and rendering to different machines
 
 2do:
-	zoom out. 
 	A stack of animations
 	3D scatter with T
+	redo 1D
+	find periodicity
 
 Deviations from reality:
 	1. Rigid body. 

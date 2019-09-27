@@ -1,4 +1,4 @@
-initProgram();
+% initProgram();
 
 % HONEST = true;
 % x_range = [0 .1];
@@ -28,7 +28,7 @@ while true
     saveas(gcf, sprintf(FIG_PATH, resolution));
     disp('fig saved.');
     resolution = resolution * 2 - 1;
-    if resolution > 100
+    if resolution > 200
         break;
     end
     disp('expanding matrix...');
