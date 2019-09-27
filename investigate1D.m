@@ -3,46 +3,33 @@
 
 initProgram();
 
-RENDER = false;
 BACKTRACK_WEIGHT = [.618, 1 - .618]';
-RESOLUTION = 0.0001;
-if ~RENDER
-    hold on;
-end
+RESOLUTION = 0.00001;
 
 window_left = 0;
-window_right = 0;
-cursor = .01;
-frontier = .01;
+cursor = 0;
 loadDice();
 initDiceFromCursor();
 roll();
 left_face = roll_result;
+cursor = .01;
 marching_or_searching = true;
 
+hold on;
 while true
     loadDice();
     initDiceFromCursor();
-    if RENDER
-        if marching_or_searching
-            roll()
-        else
-            rollAndRender();
-        end
-    else
-        roll();
-        scatter(cursor, T, 5, FACE_COLOR(roll_result, :), 'filled');
-    end
+    roll();
+    scatter(cursor, T, 5, FACE_COLOR(roll_result, :), 'filled');
     if marching_or_searching
         % marching
         if roll_result == left_face
-            frontier = frontier + (frontier - window_left) * 1.2;
+            cursor = cursor + (cursor - window_left) * 1.2;
             window_left = cursor;
-            cursor = frontier;
         else
             marching_or_searching = false;
-            frontier_face = roll_result;
-            window_right = frontier;
+            right_face = roll_result;
+            window_right = cursor;
             cursor = [window_left window_right] * BACKTRACK_WEIGHT;
         end
     else
@@ -50,20 +37,15 @@ while true
         if roll_result == left_face
             window_left = cursor;
         else
-            if roll_result == frontier_face
-                window_right = cursor;
-            else
-                frontier_face = roll_result;
-                frontier = cursor;
+            if roll_result == right_face
                 window_right = cursor;
             end
         end
         if window_right < window_left + RESOLUTION
             marching_or_searching = true;
-            cursor = frontier + (frontier - window_left) * .4;
-            window_left = frontier;
-            frontier = cursor;
-            left_face = frontier_face;
+            cursor = window_right * 2 - window_left;
+            window_left = window_right;
+            left_face = right_face;
         else
             cursor = [window_left window_right] * BACKTRACK_WEIGHT;
         end

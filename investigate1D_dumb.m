@@ -3,9 +3,9 @@
 
 initProgram();
 
-RESOLUTION = 0.0001;
+RESOLUTION = 0.00001;
 
-cursor = 0.01;
+cursor = 0;
 
 hold on;
 while true
