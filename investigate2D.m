@@ -7,6 +7,8 @@
 % display(FIG_PATH);
 % input('Is that OK? Enter');
 
+T_AXIS = true;
+
 hold on;
 resolution = 8;
 map = int8(zeros(resolution, resolution));
@@ -17,7 +19,11 @@ for p = 1:resolution
         initDiceFromXY();
         roll();
         map(p, q) = roll_result;
-        scatter(x, y, 10, FACE_COLOR(roll_result, :), 'filled');
+        if T_AXIS
+            scatter3(x, y, T, 10, FACE_COLOR(roll_result, :), 'filled');
+        else
+            scatter(x, y, 10, FACE_COLOR(roll_result, :), 'filled');
+        end
     end
     pause(.001);
 end
@@ -47,7 +53,11 @@ while true
                 initDiceFromXY();
                 roll();
                 map(p, q) = roll_result;
-                scatter(x, y, 10, FACE_COLOR(roll_result, :), 'filled');
+                if T_AXIS
+                    scatter3(x, y, T, 10, FACE_COLOR(roll_result, :), 'filled');
+                else
+                    scatter(x, y, 10, FACE_COLOR(roll_result, :), 'filled');
+                end
                 p = p - 1;
             end
             % Do the same on q. (How to simplify?)
@@ -58,7 +68,11 @@ while true
                 initDiceFromXY();
                 roll();
                 map(p, q) = roll_result;
-                scatter(x, y, 10, FACE_COLOR(roll_result, :), 'filled');
+                if T_AXIS
+                    scatter3(x, y, T, 10, FACE_COLOR(roll_result, :), 'filled');
+                else
+                    scatter(x, y, 10, FACE_COLOR(roll_result, :), 'filled');
+                end
             end
             pause(.001);
         end
@@ -74,7 +88,11 @@ while true
                 initDiceFromXY();
                 roll();
                 map(p, q) = roll_result;
-                scatter(x, y, 10, FACE_COLOR(roll_result, :), 'filled');
+                if T_AXIS
+                    scatter3(x, y, T, 10, FACE_COLOR(roll_result, :), 'filled');
+                else
+                    scatter(x, y, 10, FACE_COLOR(roll_result, :), 'filled');
+                end
             end
             pause(.001);
         end

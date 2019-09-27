@@ -8,9 +8,9 @@ Dumped ideas:
 2do:
 	fig2png
 	analyze 2D scatter
-	redo 1D
 	find periodicity
 	3D scatter with T	< find the right home
+	2.5D scatter with T	< find the right home
 	
 	A stack of animations
 	lock in and animate a 3-cell-point
