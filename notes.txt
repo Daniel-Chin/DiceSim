@@ -6,10 +6,14 @@ Dumped ideas:
 	Split simulation and rendering to different machines
 
 2do:
-	A stack of animations
-	3D scatter with T
+	fig2png
+	analyze 2D scatter
 	redo 1D
 	find periodicity
+	3D scatter with T	< find the right home
+	
+	A stack of animations
+	lock in and animate a 3-cell-point
 
 Deviations from reality:
 	1. Rigid body. 
