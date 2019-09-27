@@ -13,4 +13,5 @@ while i > 0
     saveas(gcf, sprintf(VIDEO_PATH, frame_i));
     frame_i = frame_i + 1;
 end
+close all;
 roll_result = whichFace(X, FACE_LOOKUP);

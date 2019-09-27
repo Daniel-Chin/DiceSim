@@ -31,7 +31,7 @@ while true
         end
     else
         roll();
-        scatter(cursor, T, 10, FACE_COLOR(roll_result, :));
+        scatter(cursor, T, 5, FACE_COLOR(roll_result, :), 'filled');
     end
     if marching_or_searching
         % marching
