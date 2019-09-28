@@ -9,7 +9,7 @@ for p = 1:resolution
             pqr2xyz();
             initDiceFromXYZ();
             roll();
-            scatter(x, y, z, 8, FACE_COLOR(roll_result, :), 'filled');
+            scatter3(x, y, z, 8, FACE_COLOR(roll_result, :), 'filled');
         end
         pause(.001);
     end
@@ -35,7 +35,7 @@ while true
                 pqr2xyz();
                 initDiceFromXYZ();
                 roll();
-                scatter(x, y, z, 8, FACE_COLOR(roll_result, :), 'filled');
+                scatter3(x, y, z, 8, FACE_COLOR(roll_result, :), 'filled');
                 pause(.001);
             end
         end
