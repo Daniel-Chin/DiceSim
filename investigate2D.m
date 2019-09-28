@@ -20,9 +20,9 @@ for p = 1:resolution
         roll();
         map(p, q) = roll_result;
         if T_AXIS
-            scatter3(x, y, T, 10, FACE_COLOR(roll_result, :), 'filled');
+            scatter3(x, y, T, 8, FACE_COLOR(roll_result, :), 'filled');
         else
-            scatter(x, y, 10, FACE_COLOR(roll_result, :), 'filled');
+            scatter(x, y, 8, FACE_COLOR(roll_result, :), 'filled');
         end
     end
     pause(.001);
@@ -37,11 +37,13 @@ while true
     if resolution > 200
         break;
     end
-    disp('expanding matrix...');
-    map(1:2:resolution, 1:2:resolution) = map;
-    map(2:2:resolution - 1, 1:2:resolution) = map(1:2:resolution - 2, 1:2:resolution);
-    map(:, 2:2:resolution - 1) = map(:, 1:2:resolution - 2);
-    disp('matrix expanded.');
+    if ~HONEST
+        disp('expanding matrix...');
+        map(1:2:resolution, 1:2:resolution) = map;
+        map(2:2:resolution - 1, 1:2:resolution) = map(1:2:resolution - 2, 1:2:resolution);
+        map(:, 2:2:resolution - 1) = map(:, 1:2:resolution - 2);
+        disp('matrix expanded.');
+    end
     
     % fill edge
     for p = 1:2:resolution - 2
@@ -52,11 +54,13 @@ while true
                 pq2xy();
                 initDiceFromXY();
                 roll();
-                map(p, q) = roll_result;
+                if ~HONEST
+                    map(p, q) = roll_result;
+                end
                 if T_AXIS
-                    scatter3(x, y, T, 10, FACE_COLOR(roll_result, :), 'filled');
+                    scatter3(x, y, T, 8, FACE_COLOR(roll_result, :), 'filled');
                 else
-                    scatter(x, y, 10, FACE_COLOR(roll_result, :), 'filled');
+                    scatter(x, y, 8, FACE_COLOR(roll_result, :), 'filled');
                 end
                 p = p - 1;
             end
@@ -67,11 +71,13 @@ while true
                 pq2xy();
                 initDiceFromXY();
                 roll();
-                map(p, q) = roll_result;
+                if ~HONEST
+                    map(p, q) = roll_result;
+                end
                 if T_AXIS
-                    scatter3(x, y, T, 10, FACE_COLOR(roll_result, :), 'filled');
+                    scatter3(x, y, T, 8, FACE_COLOR(roll_result, :), 'filled');
                 else
-                    scatter(x, y, 10, FACE_COLOR(roll_result, :), 'filled');
+                    scatter(x, y, 8, FACE_COLOR(roll_result, :), 'filled');
                 end
             end
             pause(.001);
@@ -81,17 +87,21 @@ while true
     % fill hole
     for p = 2:2:resolution - 1
         for q = 2:2:resolution - 1
-            map(p, q) = map(p - 1, q - 1);
+            if ~HONEST
+                map(p, q) = map(p - 1, q - 1);
+            end
             if HONEST || any(map(p - 1:p + 1, q - 1:q + 1) ~= map(p, q), 'all')
                 loadDice();
                 pq2xy();
                 initDiceFromXY();
                 roll();
-                map(p, q) = roll_result;
+                if ~HONEST
+                    map(p, q) = roll_result;
+                end
                 if T_AXIS
-                    scatter3(x, y, T, 10, FACE_COLOR(roll_result, :), 'filled');
+                    scatter3(x, y, T, 8, FACE_COLOR(roll_result, :), 'filled');
                 else
-                    scatter(x, y, 10, FACE_COLOR(roll_result, :), 'filled');
+                    scatter(x, y, 8, FACE_COLOR(roll_result, :), 'filled');
                 end
             end
             pause(.001);
