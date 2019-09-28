@@ -1,12 +1,4 @@
-initProgram();
-
-HONEST = true;
-x_range = [];
-y_range = [];
-z_range = [];
-FIG_PATH = '3D_scatter/home/honest_%d.png';
-display(FIG_PATH);
-input('Is that OK? Enter');
+disp(SCATTER_PATH);
 
 hold on;
 resolution = 6;
@@ -26,10 +18,10 @@ pause(1);
 
 while true
     disp('Saving fig...');
-    savefig(sprintf(FIG_PATH, resolution));
+    savefig(sprintf(SCATTER_PATH, resolution));
     disp('fig saved.');
     resolution = resolution * 2 - 1;
-    if resolution > 42  % 21 is the theoretical max for my 4GB RAM
+    if resolution > 22
         break;
     end
     
