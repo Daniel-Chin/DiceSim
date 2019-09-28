@@ -6,11 +6,9 @@ Dumped ideas:
 	Split simulation and rendering to different machines
 
 2do:
-	fig2png
-	analyze 2D scatter
-	find periodicity
-	3D scatter with T	< find the right home
-	2.5D scatter with T	< find the right home
+	3D scatter 	< find the right home
+	Zoom in to have smooth 2.5D with T. choose small island sharp corner
+	zoom even more out
 	
 	A stack of animations
 	lock in and animate a 3-cell-point
