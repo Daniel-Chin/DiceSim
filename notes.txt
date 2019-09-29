@@ -6,12 +6,13 @@ Dumped ideas:
 	Split simulation and rendering to different machines
 
 2do:
-	3D scatter 	< find the right home
-	Zoom in to have smooth 2.5D with T. choose small island sharp corner
-	zoom even more out
+	Use animation instead of 3D scatter (z axis > time axis)
 	
 	A stack of animations
 	lock in and animate a 3-cell-point
+	animate micro party
+	
+	better PC > take a better look at 2D_T
 
 Deviations from reality:
 	1. Rigid body. 

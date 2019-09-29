@@ -34,9 +34,9 @@ while true
     disp('fig saved.');
     resolution = resolution * 2 - 1;
     if T_AXIS
-        input('Drag and rotate the graph! Then press Enter...');
+        % input('Drag and rotate the graph! Then press Enter...');
     end
-    if resolution > 162
+    if resolution > 100
         break;
     end
     disp(sprintf('resolution is now %d...', resolution));
