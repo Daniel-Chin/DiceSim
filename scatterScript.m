@@ -1,13 +1,5 @@
-initProgram();
-x_range = [.057 .0575];
-y_range = [.042 .044];
-T_AXIS = false;%
-SCATTER_DIR = '2D_scatter/green_island_2/';%
-mkdir(SCATTER_DIR);
-SCATTER_PATH = [SCATTER_DIR 'honest_%d.png'];%
-investigate2D();
 
-stop();
+error('a');
 initProgram();
 x_range = [.056 .06];
 y_range = [.036 .048];

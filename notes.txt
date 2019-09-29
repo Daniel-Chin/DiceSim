@@ -11,6 +11,7 @@ Dumped ideas:
 	A stack of animations
 	lock in and animate a 3-cell-point
 	animate micro party
+	animate green_island 5
 	
 	better PC > take a better look at 2D_T
 

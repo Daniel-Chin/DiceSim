@@ -36,7 +36,8 @@ while true
     if T_AXIS
         % input('Drag and rotate the graph! Then press Enter...');
     end
-    if resolution > 100
+    %if resolution > 100
+    if resolution > 50
         break;
     end
     disp(sprintf('resolution is now %d...', resolution));
