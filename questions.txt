@@ -1,4 +1,8 @@
-Solved: Total energy decreases casually
+Total energy decreases casually
+	What's the relationship with regard to delta_t?
 dynamic delta_t: closer to ground?
+	Yes, ppl do it
 Use the second term in taylor series? 
+	Think stability
 Is it OK to change I to pretend it's a uniform cube? 
+	Yes
