@@ -3,28 +3,30 @@ draw a 1D line in the space, take x
 draw x - simulation_time graph
 
 Dumped ideas:
-	Split simulation and rendering to different machines
+    Split simulation and rendering to different machines
 
 2do:
-	Use animation instead of 3D scatter (z axis > time axis)
-	
-	A stack of animations
-	lock in and animate a 3-cell-point
-	animate micro party
-	animate green_island 5
-	
-	better PC > take a better look at 2D_T
+    Use animation instead of 3D scatter (z axis > time axis)
+    
+    lock in and animate a 3-cell-point
+    animate micro party
+    animate green_island 5
+    animate periodicity
+    
+    better PC > take a better look at 2D_T
+    
+    Processing: canon
 
 Deviations from reality:
-	1. Rigid body. 
-		we will not have basketball spin. 
-	2. Perfect ground. 
-		Deterministic. 
-	3. Super sharp corner
-		Does not spin stably. 
+    1. Rigid body. 
+        we will not have basketball spin. 
+    2. Perfect ground. 
+        Deterministic. 
+    3. Super sharp corner
+        Does not spin stably. 
 
 Discussion:
-	What does a three-cell-point correspond to? 
-	Ring climbs hill rail analogy
-	Set resolution = 0, got forever.mat
-	What causes the sin ripple? 
+    What does a three-cell-point correspond to? 
+    Ring climbs hill rail analogy
+    Set resolution = 0, got forever.mat
+    What causes the sin ripple? 

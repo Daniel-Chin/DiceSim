@@ -2,3 +2,4 @@ example.m
 *.fig
 *.png
 video/
+AE_output/

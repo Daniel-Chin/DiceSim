@@ -1,5 +1,6 @@
 Total energy decreases casually
 	What's the relationship with regard to delta_t?
+		delta_t *= 2 => error/dt *= 4
 dynamic delta_t: closer to ground?
 	Yes, ppl do it
 Use the second term in taylor series? 
