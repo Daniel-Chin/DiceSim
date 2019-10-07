@@ -8,13 +8,6 @@ Dumped ideas:
 2do:
     Use animation instead of 3D scatter (z axis > time axis)
     
-    lock in and animate a 3-cell-point
-    animate micro party
-    animate green_island 5
-    animate periodicity
-    
-    better PC > take a better look at 2D_T
-    
     Processing: canon
 
 Deviations from reality:
@@ -27,6 +20,7 @@ Deviations from reality:
 
 Discussion:
     What does a three-cell-point correspond to? 
-    Ring climbs hill rail analogy
+    standing on edge: Ring climbs hump rail analogy
     Set resolution = 0, got forever.mat
     What causes the sin ripple? 
+    Show 2D_scatter_T/tiny_island/41
