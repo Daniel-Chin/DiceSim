@@ -1,3 +1,12 @@
+initProgram;
+x_range = [0 .1]; y_range = [0 .1];
+HONEST = true;
+T_AXIS = false;
+SCATTER_DIR = '2D_scatter/home2/';%
+mkdir(SCATTER_DIR);
+SCATTER_PATH = [SCATTER_DIR 'honest_%d.png'];%
+investigate2D();
+
 
 error('a');
 initProgram();

@@ -1,6 +1,7 @@
 % initProgram();
 
 % HONEST = true;
+% T_AXIS = false;
 % x_range = [0 .1];
 % y_range = [0 .1];
 % FIG_PATH = '2D_scatter_T/home/honest_try.png';
@@ -36,8 +37,7 @@ while true
     if T_AXIS
         % input('Drag and rotate the graph! Then press Enter...');
     end
-    %if resolution > 100
-    if resolution > 50
+    if resolution > 100
         break;
     end
     disp(sprintf('resolution is now %d...', resolution));
