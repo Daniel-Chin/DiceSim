@@ -6,9 +6,6 @@ Dumped ideas:
     Split simulation and rendering to different machines
 
 2do:
-    Use animation instead of 3D scatter (z axis > time axis)
-    
-    Processing: canon
 
 Deviations from reality:
     1. Rigid body. 
@@ -25,3 +22,6 @@ Discussion:
     What causes the sin ripple? 
     Show 2D_scatter_T/tiny_island/41
     topologyOfRedSea
+    Could have: 
+        made base vectors perpendicular. 
+        Use animation instead of 3D scatter (z axis > time axis)
