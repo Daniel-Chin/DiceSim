@@ -1,8 +1,9 @@
-static final int FPS = 30;
-static final float TRANSITION_DURATION = 1f;
+static final int FPS = 20;
+static final float TRANSITION_DURATION = 1.5;
+static final float PI = 3.14159265358979;
 
-static final float _ORIGIN_X = .13;
-static final float _ORIGIN_Y = .891;
+static final float _ORIGIN_X = .135;
+static final float _ORIGIN_Y = .91;
 static final float _I_HAT = .775;
 static final float _J_HAT = -.815;
 static float _I_TERM = _ORIGIN_X + _I_HAT;
@@ -28,6 +29,7 @@ void setup() {
   J_TERM   = int(_J_TERM   * height);
 
   rectMode(CORNERS);
+  imageMode(CORNERS);
   noStroke();
   fill(0, 0, 0, 100);
 
@@ -47,6 +49,7 @@ void draw() {
         theScatter = biggerScatter;
       }
       transition_direction = 0;
+      surface.setTitle(theScatter.name);
     } else {
       drawTransition();
       return;
@@ -85,7 +88,6 @@ void mousePressed() {
   if (! hit) {
     onClickParent();
   }
-  surface.setTitle(theScatter.name);
 }
 
 void onClickChild(Scatter child) {
@@ -105,10 +107,14 @@ void onClickParent() {
 }
 
 void drawTransition() {
-  float skewed_progress = transition_progress;
+  float skewed_progress = sin(transition_progress * PI - PI / 2f) / 2f + .5;
 
   float the_width   = theScatter.x1 - theScatter.x0;
   float the_height  = theScatter.y1 - theScatter.y0;
+  if (the_width < .000005) {
+    transition_progress = transition_direction * .51 + .5;
+    return;
+  }
   float bigger_width  = biggerScatter.x1 - biggerScatter.x0;
   float bigger_height = biggerScatter.y1 - biggerScatter.y0;
   float x_scale = exp(skewed_progress * log(bigger_width / the_width));
@@ -134,7 +140,7 @@ void drawTransition() {
   );
   scale(x_scale, y_scale);
 
-  //image(biggerScatter.img, 0, 0, width, height);
+  image(biggerScatter.img, 0, 0, width, height);
 
   tint(255, 255 * skewed_progress);
   image(theScatter.img, 
@@ -143,15 +149,15 @@ void drawTransition() {
       biggerScatter.x0, biggerScatter.x1, ORIGIN_X, I_TERM
     ), 
     map(
-      theScatter.y0 - the_width * _ORIGIN_Y / _J_HAT, 
+      theScatter.y0 - the_height * (1f - _ORIGIN_Y - _J_HAT) / _J_HAT, 
       biggerScatter.y0, biggerScatter.y1, ORIGIN_Y, J_TERM
-    ), 
+    ),
     map(
-      theScatter.x1 + the_width * (1f - _ORIGIN_X - _I_HAT) / _J_HAT, 
+      theScatter.x1 + the_width * (1f - _ORIGIN_X - _I_HAT) / _I_HAT, 
       biggerScatter.x0, biggerScatter.x1, ORIGIN_X, I_TERM
     ), 
     map(
-      theScatter.y1 + the_width * (1f - _ORIGIN_Y - _J_HAT) / _J_HAT, 
+      theScatter.y1 + the_height * _ORIGIN_Y / _J_HAT, 
       biggerScatter.y0, biggerScatter.y1, ORIGIN_Y, J_TERM
     )
   );

@@ -66,7 +66,7 @@ void setupScatters() {
   party_2              = new Scatter("party_2", .0197, .0205, .0177, .0186);
   party                = new Scatter("party", .02, .026, .01, .02);
   home                 = new Scatter("home", 0, .1, 0, .1);
-  blue_islands         = new Scatter("blue_islands", 0.003, 0.009, .06, .07);
+  blue_islands         = new Scatter("blue_islands", 0.003, 0.009, .06, .072);
   black_island_2       = new Scatter("black_island_2", .02112, .02124, .01632, .01646);
   black_island         = new Scatter("black_island", .021, .0213, .0163, .01675);
   green_island_g       = new Scatter("green_island/g", .055, .06, .035, .045);
