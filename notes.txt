@@ -25,3 +25,6 @@ Discussion:
     Could have: 
         made base vectors perpendicular. 
         Use animation instead of 3D scatter (z axis > time axis)
+    time step sensitivity?
+        Really high! 
+        might be interesting to think: if timestep -> 1/inf, will the topology be generally the same?
