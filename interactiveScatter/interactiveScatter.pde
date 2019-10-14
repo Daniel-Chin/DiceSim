@@ -35,7 +35,7 @@ void setup() {
 
   setupScatters();
 
-  theScatter = zoom_out;
+  theScatter = home;
   transition_direction = 0;
   println("DONE");
 }
@@ -66,7 +66,7 @@ void draw() {
   }
 }
 
-void mousePressed() {
+void mousePressed() { 
   float left  ; 
   float top   ; 
   float right ; 

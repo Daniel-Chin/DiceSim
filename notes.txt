@@ -1,11 +1,8 @@
-Cell structure on initial condition space
-draw a 1D line in the space, take x
-draw x - simulation_time graph
-
 Dumped ideas:
     Split simulation and rendering to different machines
 
-2do:
+2 do for the write up:
+    AE_output/micro_party_blues: show for yellow it's less different
 
 Deviations from reality:
     1. Rigid body. 
@@ -16,10 +13,6 @@ Deviations from reality:
         Does not spin stably. 
 
 Discussion:
-    What does a three-cell-point correspond to? 
-    standing on edge: Ring climbs hump rail analogy
-    Set resolution = 0, got forever.mat
-    What causes the sin ripple? 
     Show 2D_scatter_T/tiny_island/41
     topologyOfRedSea
     Could have: 
