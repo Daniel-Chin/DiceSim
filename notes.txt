@@ -21,3 +21,6 @@ Discussion:
     time step sensitivity?
         Really high! 
         might be interesting to think: if timestep -> 1/inf, will the topology be generally the same?
+
+Writeup:
+    (Damp + Normal) * mu

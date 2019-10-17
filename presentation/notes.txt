@@ -1,20 +1,21 @@
-Show animation. colored Numbers. 
-Deterministic -> manipulate the initial condition to acheive outcome. 
+Show animation. mention colored Numbers. 
+Deterministic -> human manipulate the initial condition to acheive outcome. 
 Initial condition: 6 numbers: angular momentum and linear velocity. 
 Cell structure, because if you error a little, you should still get the same result, as physics is continuous. 
 strategy 1: Find a large cell. 
 strategy 2: Cells of the same number. 
 Leads to question: can it happen? 
 Can adjacent cells be of opposite numbers? 
-What is the edge? 
+Let me ask you: What is the edge? 
 Does standing on edge exists as exact solutions? 
 Ring climbs hump rail analogy
 vertices that connect three cells? 
 Can there be vertices that connect four cells? 
+Are four-vertices even avoidable in a 6D cell structure? 
 With the power of simulation, we can plot things out. 
 We can fast-forward time and run 1 simulation per second. 
 Dynamic 1D plotting. Marching and binary searching. Find third color? recursive. 
-Show. Y axis is time. The algo successfully avoided abviously boring areas. 
+Show. Y axis is time, the time it takes for the dice to settle down. The algo successfully avoided abviously boring areas. 
 Findings: borders strikes up high; boring areas and crazy areas. 
 However, fails to honest policy. Not using it in the future. 
 Also, y axis: simulation time before settle down. Think: how can you tell it's settled down? 
