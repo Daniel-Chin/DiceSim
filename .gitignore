@@ -3,3 +3,5 @@ example.m
 *.png
 video/
 AE_output/
+*.pptx
+!presentation/slides_no_video.pptx

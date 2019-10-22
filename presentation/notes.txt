@@ -1,35 +1,117 @@
-Show animation. mention colored Numbers. 
-Deterministic -> human manipulate the initial condition to acheive outcome. 
-Initial condition: 6 numbers: angular momentum and linear velocity. 
-Cell structure, because if you error a little, you should still get the same result, as physics is continuous. 
-strategy 1: Find a large cell. 
-strategy 2: Cells of the same number. 
-Leads to question: can it happen? 
-Can adjacent cells be of opposite numbers? 
-Let me ask you: What is the edge? 
-Does standing on edge exists as exact solutions? 
-Ring climbs hump rail analogy
-vertices that connect three cells? 
-Can there be vertices that connect four cells? 
-Are four-vertices even avoidable in a 6D cell structure? 
-With the power of simulation, we can plot things out. 
-We can fast-forward time and run 1 simulation per second. 
-Dynamic 1D plotting. Marching and binary searching. Find third color? recursive. 
-Show. Y axis is time, the time it takes for the dice to settle down. The algo successfully avoided abviously boring areas. 
-Findings: borders strikes up high; boring areas and crazy areas. 
-However, fails to honest policy. Not using it in the future. 
-Also, y axis: simulation time before settle down. Think: how can you tell it's settled down? 
-Never reaches zero. 10 to the minus sth. Even better: call the end of simulation before settle down. 
-We used total energy. 
-Border
-Border with animation
-Now imagine you do a binary search. Show forever.mat
-Party: don't you wonder how this looks in 2D? Or even 6D? 
-How to optimize? How to trace out the border of a cell without bothering too much about the inside of a cell? 
-show cheat
-Green dot??? Periodicity??? 
-Show repetition. Many cells? Same cell, with ripple surface? 
-Compare with honest. 
-What's going on? zoom in to see! 
-Now I will take you on a tour into this 2D space. 
-"Before I zoom it, What do you expect to see? "
+Open Matlab. Open Processing 3. 
+
+`main`
+    Mention colors
+    3d rotate
+    Edge contacting Ground turns red
+
+Deterministic
+    Same initial condition → same outcome
+    "From this point on, whenever I say 'outcome', I mean the number that the dice gives you in the end. When ever I say 'initial condition', I mean these six real numbers." 3+3. Initial condition space is 6D. 
+    If a human has perfect control over the initial condition, then they can roll whatever number they want. 
+    What's the problem? 
+    [click]
+    Human has error, and the initial condition may be just a little bit off, and the outcome would be different. However, 
+    [click]
+    if the initial condition is similar enough, then the outcome should be the same. 
+    Before I prove this, do you agree with me? Does it make sense? 
+    It makes sense, because physics is a continuous thing. The initial condition space is a continuous space. Outcome is discrete, so a dice roll is just some sort of rounding operation. 
+    For rounding operations, this [equation] makes sense. We also see that I can't prove this anymore, since it's only true 99% of the time. But we will get to that later. 
+    [click]
+
+Cell structure:
+    Now let's map out function f. In the 6D initial condition space, each point leads to an outcome. If we color the 6D space according to outcome, we should get something like this image. Compartments. I call it "cell structure". This is a direct result from this [last slide]. [next slide] You randomly pick a point, and you know its local surrounding is of the same color, because physics is continuous. 
+    So, for a human to manipulate the outcome of a dice, we just need to find a large cell. You aim at the middle and as long as the cell is larger than your error, you get the desired outcome. 
+    [click]
+    So that's strategy 1. Alternatively, we can find a group of cells of the same color. This leads to an interesting question: can we have adjacent cells of the same color? Or, a better question is, 
+    [click]
+    Can we have adjacent cells pointing to opposite faces on the cube? For example, 1 and 6? Is that even possible? Because they are not adjacent on the dice! 
+    And thinking about that, we realize that we haven't asked the most important question: 
+    [click]
+    What is a border? Topologically speaking, we must have borders seperating the cells. What do borders correspond to in terms of dice rolling? 
+    What do you guys think? 
+    What's inbetween 1 and 3 but not 1 and not 3? 
+    I can show you. 
+    ```
+    whats_edge
+    ```
+    [read slide]
+    Now let's keep going. 
+    [click]
+    What about vertices that connect three cells? Is the dice standing on its corner? Ok, if that's the case, 
+    [click]
+    What about vertices that connect 7 cells? [Read slide]
+    [click]
+    Wait a sec… There’s only 6 faces on a dice! 
+    Really interesting topology questions here. 
+    I hope, by now, I have successfully aroused your curiosity, because  I'm going to show you graphs now. 
+
+1D investigation
+    Let's first start 1D. 
+    [click]
+    We take a line in the 6D space. 
+    [click]
+    And this is our 1D initial condition line. We are basically coloring this line. 
+    One naive way of doing this is to sample points with equal distance, run a simulation for each point and check the outcome. 
+    [click]
+    However, However, However, we can do better. We only care about where the borders are. We don't really need to sample a lot of points within a cell. 
+    [click]
+    Could we increase resolution near the border, and decrease resolution within a cell? 
+    [click]
+    Introducing, 1D dynamic sampling algorithm. The process alternate between marching mode and binary searching mode. We start in marching mode. We take big strides until we encounter a different color. Once that happens we know the border must be inside this section so we switch to binary search mode and seek out the boundary. Once we reach satisfactory resolution we return to marching mode and keep going. 
+    Let's see it in action. 
+    `investigate1D`
+    Do you see that? The algorithm successfully skipped over obviously boring area without bothering with it. So that's good. 
+    By the way, Y axis is time, the time it takes for the dice to settle down. 
+    I'll stop the program now because it's going to take a day. 
+    [slide click]
+    This is the result. Look at this beautiful thing. What's going on there. 
+    The first thing we notice: [pause] Borders strike up high. Within a cell it's lower. 
+    This aligns with our hypothesis that borders mean the dice will stand on its edge. To really see what's going on at the border, we can just zoom it and let MATLAB plot again. 
+    [click]s...
+    [video]
+    What's this shape? What equation would describe this? 
+    And michael said, why don't we use dynamic plotting again? 
+    You see, if we zoom in we lose the big picture. If we look at the big picture we don't see the datails. Why don't we up the resolution near the border? This is what we got. 
+    [click]
+    Hmm. This would be a great thing to look at another day. Today we need to move on. 
+    [click]
+    This is plotting with the naive sampling method. If we compare our dynamic sampling and the naive sampling, we see that our method missed a lot of cells, due to the nature of its marching. That's why we didn't use dynamic sampling in most of the plots. 
+    And then we zoomed into this part.
+    [click]
+    Now, don't you wonder what this will look like in 2D? 
+    [click]
+
+2D investigation
+    So let's take a plane in the 6D space. 
+    [click]
+    explain 2d dynamic sampling
+    [click]s...
+    Compared to naive sampling, in 2D dynamic sampling really saves us a lot of simulations! 
+    But really, what's here? 
+    Why is there a lonely green dot here? Again, another great topic for yet another day. Today we need to move on. 
+    Dynamic sampling still has the problem of missing details. So in the future we will only use naive sampling. 
+    Here we see some repetition. If we zoom in on X axis and zoom out on Y axis, we get this. 
+    [click]
+    It's periodic. Strange. Very strange. What on earth is periodic about rolling a dice in terms of initial condition? Unsolved mystery here. 
+    Note that these can be many different cells, but they can also be the same cell. Remember this is a 2D slice in a 6D space. 
+    [blackboard]
+    But then, why would there be ripples on the surface of a 6D cell? 
+    Things to think about. 
+
+Tour
+    Now I will take you on a tour into this 2D space. 
+    [processing]
+    zoom out. Dice is pretty random. 
+    red sea. 
+    [video]
+    Micro party
+    Look at the three blue areas. Do they look the same? 
+    [video]
+    This is showing all 6 different outcomes
+    [video]
+    ...
+    "The coast line gets more complex as you zoom in."
+    "Before I zoom it, What do you expect to see? "
+    ...
+    [video] stands on corner
