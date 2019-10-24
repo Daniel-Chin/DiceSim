@@ -1,5 +1,8 @@
 Open Matlab. Open Processing 3. 
 
+[click]
+`main`
+Michael math explanation
 `main`
     Mention colors
     3d rotate
@@ -58,7 +61,7 @@ Cell structure:
     [click]
     Could we increase resolution near the border, and decrease resolution within a cell? 
     [click]
-    Introducing, 1D dynamic sampling algorithm. The process alternate between marching mode and binary searching mode. We start in marching mode. We take big strides until we encounter a different color. Once that happens we know the border must be inside this section so we switch to binary search mode and seek out the boundary. Once we reach satisfactory resolution we return to marching mode and keep going. 
+    Introducing, 1D dynamic sampling algorithm. The process alternates between marching mode and binary searching mode. We start in marching mode. We take big strides until we encounter a different color. Once that happens we know the border must be inside this section so we switch to binary search mode and seek out the boundary. Once we reach satisfactory resolution we return to marching mode and keep going. 
     Let's see it in action. 
     `investigate1D`
     Do you see that? The algorithm successfully skipped over obviously boring area without bothering with it. So that's good. 
@@ -67,7 +70,8 @@ Cell structure:
     [slide click]
     This is the result. Look at this beautiful thing. What's going on there. 
     The first thing we notice: [pause] Borders strike up high. Within a cell it's lower. 
-    This aligns with our hypothesis that borders mean the dice will stand on its edge. To really see what's going on at the border, we can just zoom it and let MATLAB plot again. 
+    This aligns with our hypothesis that borders mean the dice will stand on its edge. 
+    To really see what's going on at the border, we can just zoom it and let MATLAB plot again. 
     [click]s...
     [video]
     What's this shape? What equation would describe this? 
@@ -84,6 +88,7 @@ Cell structure:
 
 2D investigation
     So let's take a plane in the 6D space. 
+    Now we are coloring a 2D plane. 
     [click]
     explain 2d dynamic sampling
     [click]s...

@@ -21,6 +21,11 @@ Discussion:
     time step sensitivity?
         Really high! 
         might be interesting to think: if timestep -> 1/inf, will the topology be generally the same?
+    duality to graph
 
 Writeup:
     (Damp + Normal) * mu
+
+Questions:
+    What is the name of the topo question? (connected cells)
+    higher mu -> easier to cheat? 
