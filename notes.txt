@@ -1,31 +1,8 @@
 Dumped ideas:
     Split simulation and rendering to different machines
 
-2 do for the write up:
-    AE_output/micro_party_blues: show for yellow it's less different
-
-Deviations from reality:
-    1. Rigid body. 
-        we will not have basketball spin. 
-    2. Perfect ground. 
-        Deterministic. 
-    3. Super sharp corner
-        Does not spin stably. 
-
-Discussion:
-    Show 2D_scatter_T/tiny_island/41
-    topologyOfRedSea
-    Could have: 
-        made base vectors perpendicular. 
-        Use animation instead of 3D scatter (z axis > time axis)
-    time step sensitivity?
-        Really high! 
-        might be interesting to think: if timestep -> 1/inf, will the topology be generally the same?
-    duality to graph
-
 Writeup:
     (Damp + Normal) * mu
 
 Questions:
     What is the name of the topo question? (connected cells)
-    higher mu -> easier to cheat? 
