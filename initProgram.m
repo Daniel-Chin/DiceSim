@@ -17,6 +17,6 @@ loadFACE_LOOKUP();
 theoratical_energy_zero = - 4 * (1 + 1) * GRAVITY(3);
 destiny_energy = - (4 + 2 * 2) * sqrt(2) * GRAVITY(3) - theoratical_energy_zero;
 confirm_destiny_energy = destiny_energy * .8;
-clear destiny_energy;
+clear destiny_energy; % We multiplied .8 in the wrong place! oops
 
 T = 0;
