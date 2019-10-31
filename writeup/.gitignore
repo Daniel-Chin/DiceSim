@@ -1,3 +1,5 @@
 img/
 docx_zip/word/media/
 writeup.docx
+v*.pdf
+*.docx

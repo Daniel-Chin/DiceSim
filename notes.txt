@@ -6,3 +6,5 @@ Writeup:
 
 Questions:
     What is the name of the topo question? (connected cells)
+    What does Omega cross look like in terms of linear trans? 
+    ODE

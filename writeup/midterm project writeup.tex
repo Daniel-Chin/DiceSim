@@ -1,0 +1,172 @@
+\documentclass[12pt]{article}
+\usepackage{titling}
+\usepackage{amsmath}
+\usepackage{amssymb,graphics,color,cite,amsmath}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{float}
+\usepackage{url}
+\usepackage[margin=0.75in]{geometry}
+
+\title{Simulating Roll of a Dice Using Rigid Body Motion}
+\date{2019-10}
+\author{Daniel Chin and Michael Li}
+\pagenumbering{arabic}
+\scriptsize
+
+\begin{document}
+
+\maketitle
+\section{Introduction}
+In this project, we use the rigid body motion model to simulate the roll of a dice. The dice is represented by 8 mass points at corners of the cube. 
+\section{Mathematical Modeling}
+\subsection{Rigid Body Motion}
+The total mass and center of mass of the system, as well as the velocity of the center of mass are defined as follows:\\
+\begin{equation}
+M=\sum_{k=1}^{n}M_{k}
+\end{equation}
+\begin{equation}
+M\vec{X_{cm}}=\sum_{k=1}^{n}{M_{k}{\vec{X_{k}}}}
+\end{equation}
+\begin{equation}
+M\vec{U_{cm}}=\sum_{k=1}^{n}{M_{k}{\vec{U_{k}}}}
+\end{equation}\\
+Let $\vec{L}$ be the angular momentum of the system about its center of mass:\\
+\begin{equation}
+\aligned
+\vec{L(t)}&=\sum_{k=1}^{n}M_{k}(\vec{X_{k}}-\vec{X_{cm}})\times \vec{U_{k}}\\
+&={\sum_{k=1}^{n}M_{k}(\vec{X_{k}}-\vec{X_{cm}})\times (\vec{U_{k}}-\vec{U_{cm}})}
+\endaligned
+\end{equation}\\
+Differentiate both sides with respect to $t$ and use the identity $(\vec{U_{k}}-\vec{U_{cm}})\times (\vec{U_{k}}-\vec{U_{cm}})=0$\\
+\begin{equation}
+\aligned
+\frac{d{\vec{L}}}{dt}&=\sum_{k=1}^{n}(\vec{X_{k}}-\vec{X_{cm}})\times (M_{k}\frac{d{\vec{U_{k}}}}{dt}-M_{k}\frac{d{\vec{U_{cm}}}}{dt})\\
+&=\sum_{k=1}^{n}(\vec{X_{k}}-\vec{X_{cm}})\times \vec{F_{k}}\\
+&=\sum_{k=1}^{n}\vec{\tilde{X_{k}}}\times \vec{F_{k}}\\
+&=\vec{\tau}
+\endaligned
+\end{equation}
+where $\vec{F_{k}}$ denotes the external force acting on a node, $\vec{\tilde{X_{k}}}$ is the positional vector of this node, and $\vec{\tau}$ is the total torque of the system.\\
+\begin{equation}
+M\frac{d{\vec{U_{cm}}}}{dt}=\vec{F}=\sum_{k=1}^{n}{F_{k}}
+\end{equation}
+Since we want the motion to be rigid, we should solve for the angular velocity. So we shall introduce the individual point velocity $\vec{u_{k}(t)}$:\\
+\begin{equation}
+\vec{u_{k}(t)}=\vec{u_{cm}(t)}+\vec{\Omega}\times(\vec{X_{k}(t)}-\vec{X_{cm}(t)})
+\end{equation}
+Then we plug the above results into the previous definition of torque:\\
+\begin{equation}
+\aligned
+\vec{L(t)}&=\sum_{k=1}^{n}M_{k}(\vec{X_{k}(t)}-\vec{X_{cm}(t)})\times (\vec{\Omega(t)}\times (\vec{X_{k}(t)}-\vec{X_{cm}(t)}\\
+&=\sum_{k=1}^{n}M_{k}{\lVert{\vec{X_{k}(t)}-\vec{X_{cm}(t)}}\rVert}^{2}\vec{\Omega(t)}-\sum_{k=1}^{n}M_{k}(\vec{X_{k}(t)}-\vec{X_{cm}(t)})^{2}\cdot \vec{\Omega}\\
+&=\vec{I(t)}\vec{\Omega(t)}
+\endaligned
+\end{equation}\\
+where $\vec{I(t)}=\sum_{k=1}^{n}M_{k}({\lVert{\tilde{\vec{X_{k}(t)}}}\rVert}^{2}E_{3\times3}-\tilde{\vec{X_{k}(t)}}(\tilde{\vec{X_{k}(t)}})^{T})$ is a $3\times3$ matrix, denoting the moment of inertia.\\
+We can solve for $\vec{\Omega}$ by computing \\
+\begin{equation}
+\vec{\Omega}={\vec{I(t)}}^{-1}\vec{L(t)}
+\end{equation}
+Once we know $\vec{\Omega}$, we construct the rotation matrix $R(\vec{\Omega},\Delta{t})$. In particular, $R$ rotates every position vector about the rotating axis for an angle $\vec{\Omega(t)}\delta{t}$.\\
+Then we construct the projection matrix onto the unit vector in the direction of $\vec{\Omega}$, which is rotational-invariant.\\
+\begin{equation}
+P(\vec{\Omega})=\frac{\vec{\Omega}}{\lVert{\vec{\Omega}}\rVert}(\frac{\vec{\Omega}}{\lVert{\vec{\Omega}}\rVert})^{T}
+\end{equation}
+We express $\tilde{\vec{X}}$ as the following:
+\begin{equation}
+\tilde{\vec{X}}=P(\vec{\Omega})\tilde{\vec{X}}+(E_{3\times3}-P(\vec{\Omega}))\tilde{\vec{X}}
+\end{equation}
+The former ingredient is rotational invariant, while the latter ingredient is rotational about $\lVert{\vec{\Omega}}\rVert\Delta{t}$ through the origin, normal to $\vec{\Omega}$.
+Finally, by taking the orthonormal basis $(\vec{v_1},\vec{v_2})$, where $\vec{v_1}=(E_{3\times3}-P(\vec{\Omega})\tilde{\vec{X}}$, $\vec{v_2}=\frac{\vec{\Omega}}{\lVert{\vec{\Omega}}\rVert}\times\vec{v_1}$,we achieve the orthogonal matrix in terms of $\tilde{\vec{X}}$ and $\lVert{\vec{\Omega}}\rVert\Delta{t}$:\\
+\begin{equation}
+R(\vec{\Omega},\Delta{t})\tilde{\vec{X}}=P(\vec{\Omega})\tilde{\vec{X}}+cos(\lVert{\vec{\Omega}}\rVert\Delta{t})(E_{3\times3}-P(\vec{\Omega}))\tilde{\vec{X}}+sin(\lVert{\vec{\Omega}}\rVert\Delta{t})\frac{\vec{\Omega}}{\lVert{\vec{\Omega}}\rVert}\times\tilde{\vec{X}}
+\end{equation}
+\subsection{Gravity and Interaction with the Ground}
+\begin{itemize}
+  \item \textbf{Gravity:} $G=mg$
+  \item \textbf{Normal Force:} The ground is modeled a stiff trampoline in 3-D space. Express the ground surface as $H$.Mass points receive an upward normal force proportional to how deep it penetrates the ground:\\
+\begin{equation}
+F_{normal}=-min(0,X_{z})\cdot k
+\end{equation}
+       where $k=500000 N/cm$ is the ground stiffness,and where $X_{z}$ is the vertical component of the position of mass point.\\
+  \item \textbf{Damping force:} The collision of the dice with the ground transfers some mechanical energy to heat. A damping force is added whenever the mass point is below $h=0$:\\
+\begin{equation}
+F_{damping}=-F_{normal}\cdot u_{h}\cdot \gamma
+\end{equation}
+where the damping coeffient $\gamma=0.005 s/cm$, $u_{z}$ is the vertical component of the velocity of the mass point.\\
+  \item \textbf{Friction:} 
+\begin{equation}
+F_{friction}=-|F_{normal}+F_{damping}|\cdot \mu \cdot \frac{u_{x,y}}{\lVert{u_{x,y}}\rVert}
+\end{equation}
+where $\mu=1.2$ is the frictional coefficient. However, we do not model static friction since we end the simulation before the dice completely stabilizes. 
+  \item \textbf{Adjusted Moment of Inertia:} If we compute the moment of inertia $\vec{I(t)}$ from the 8 mass points as discussed above, we will overestimate, since a real dice has uniform concentration of mass throughout the cube. Fortunately, we can simply replace the value of I in the simulation:\\
+\begin{equation}
+\vec{I(t)}=\frac{1}{6}ms^{2}=\frac{16}{3}\times E_{3\times3}
+\end{equation}
+Since the matrix is invariant to rotation, we do not need to update $\vec{I(t)}$ during the simulation. 
+  \item \textbf{Other Constants:} 
+\begin{itemize}
+  \item The radius of the dice is $1 cm$. 
+  \item The initial height of the dice is $15 cm$. 
+  \item The time step is $\Delta{t}=0.001 sec$. 
+\end{itemize}
+\end{itemize}
+\section{Numerical Methods}
+We use forward Euler's method to perform a timestep, given $\vec{X_{k}(t)}$, $\vec{X_{cm}(t)}$, $\tilde{\vec{X_{k}(t)}}$, $\vec{U(t)}$, $\vec{U_{cm}(t)}$, and $\vec{L(t)}$:\\
+\begin{itemize}
+  \item Given $\tilde{\vec{X_{k}(t)}}$, compute $I(t)$. Note that in our model, $I(t)$ does not vary with time.
+  \item Solve for $\vec\Omega(t)$.
+  \item Using $\vec\Omega(t)$, update $\tilde{\vec{X_{k}(t+\Delta{t})}}=R(\vec{\Omega(t)},\Delta{t})\tilde{\vec{X_{k}(t)}}$.
+  \item Update the center of mass: $\vec{X_{cm}(t+\Delta{t})}=\vec{X_{cm}(t)}+\Delta{t}\vec{U_{cm}(t)}$.
+  \item Update the velocity of the center of mass: 
+\begin{center}
+$M\frac{\vec{U_{cm}(t+\Delta{t})}-\vec{U_{cm}(t)}}{\Delta{t}}=\sum_{k}\vec{F_{k}(t+\Delta{t})}$
+\end{center}
+  \item Update the positions of the individual masses: 
+\begin{center}
+$\vec{X_{k}(t+\Delta{t})}=\vec{X_{cm}(t+\Delta{t})}+\tilde{\vec{X_{k}(t+\Delta{t})}}$
+\end{center}
+  \item Update the angular momentum:
+\begin{center}
+$\frac{\vec{L(t+\Delta{t})}-\vec{L(t)}}{\Delta{t}}=\sum_{k}\tilde{\vec{X_{k}(t+\Delta{t})}}1\times\vec{F_{k}(t+\Delta{t})}$
+\end{center}
+\end{itemize}
+\section{Simulation Results}
+\subsection{Assumptions and Cautionaries}
+\begin{itemize}
+  \item \textbf{Rigid Body:}\\
+If you drop a basketball with a backward spin, it is likely to bounce up with a forward spin. That is because the ball stores energy as rotational elastic deformation as it hits the ground. Since we model the dice as a rigid body, we will lose this effect. However, this problem can be ignored if we assume the elasticity of the table (“ground stiffness”) is the dominant factor in the interaction. 
+  \item \textbf{Perfect Ground and Air Drag:}\\
+We do not model for ground deformation or air drag. 
+  \item \textbf{Super Sharp Corner:}\\
+Because the corners of the dice are infinitely sharp right angles, the dice will not trigger the precession effect. Real dices can spin rapidly on their corner for a long time because the precession effect helps them self-stabilize. This is a major deviation of our model from reality. 
+\end{itemize}
+The potential energy of the dice when it is standing on its edge is $mg\sqrt{2}=0.0032474$. This is the critical threshold for the dice to flip over and change face. (Elastic potential energy is neglected here)
+TThe simulation is ended preemptively whenever the total energy in the system is lower than $80\%$ of the above threshold. This is to reduce simulation time.\\
+To decide which face is facing upwards, the program takes the highest four points and look up which face it is.\\
+
+\subsection{Main Results}
+Our physic model is deterministic:\\
+\begin{equation}
+\aligned
+&y=f(ic)\\
+&ic\in IC\\
+&y \in Z\bigcap\left[{1,6}\right]
+\endaligned
+\end{equation}
+
+
+\section{Further Questions}
+\section{Acknowledgement}
+The authors would like to thank Professor Peskin for his help and suggestions. Relevant documents and codes can be found here: \url{https://github.com/Daniel-Chin/DiceSim}.
+\section{References}
+\begin{itemize}
+  \item Notes on Structural Dynamics with Stiff Links: The Backward-Euler Method, by Prof. C. Peskin. \url{https://www.math.nyu.edu/faculty/peskin/modsim_lecture_notes/backward_euler.pdf}\\
+  \item Notes on Interactions of Dynamic Structures with the Ground: Non--Penetration and Slicing Frictional Forces, by Prof. C. Peskin. \url{https://www.math.nyu.edu/faculty/peskin/modsim_lecture_notes/interaction_with_ground.pdf}\\
+  \item Notes on Dynamics of Rigid Bodies, by Prof. C. Peskin. \url{https://www.math.nyu.edu/faculty/peskin/modsim_lecture_notes/rigid_body_motion.pdf}\\
+  \item Notes on Structural Dynamics with Rigid Links, by Prof. C. Peskin. \url{https://www.math.nyu.edu/faculty/peskin/modsim_lecture_notes/mechanics_with_rigid_links.pdf}\\
+\end{itemize}
+
+\end{document}
